@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="dist/bootstrap-gtreetable.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="dist/bootstrap-gtreetable.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+.state{
+	border:1px solid #F00;
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <table id="gtreetable" class="gtreetable table"><thead><tr><th width="60%">Name</th><th width="20%">Description</th></tr></thead></table>       
+</div>
+
+
+<script type="text/javascript">jQuery(document).ready(function () {
+
+jQuery('#gtreetable').gtreetable({
+		"columns" :[{"id":"state","title":"State"},{"id":"country","title":"Country"}], 
+		"source":function (id) {
+        return {
+            type: 'GET',
+            url: "process.json",
+            dataType: 'json',
+            error: function(XMLHttpRequest) {
+                alert(XMLHttpRequest.status+': '+XMLHttpRequest.responseText);
+            }
+        }; 
+    }});
+
+});</script>
+</body>
+</html>
